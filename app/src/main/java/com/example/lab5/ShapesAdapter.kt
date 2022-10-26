@@ -1,6 +1,5 @@
 package com.example.lab5
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,7 +44,6 @@ class ShapesAdapter: RecyclerView.Adapter<ShapesAdapter.ShapeHolder>() {
         checkBox.setOnClickListener {
             utilities.dynamicArrayOfShape[position].selected = !utilities.dynamicArrayOfShape[position].selected
             checkBox.isChecked = utilities.dynamicArrayOfShape[position].selected
-            Log.d("Checked", "Checked")
         }
 
         holder.btn.setOnClickListener {
