@@ -12,6 +12,7 @@ class PointsLineShape(startX: Float, startY: Float, currentX: Float, currentY: F
     override var selected: Boolean = false
 
     override fun drawShape(canvas: Canvas, paint: Paint) {
+        selectedStroke(paint)
         val radius = 70f
 
         val left = if (startX > currentX) currentX else startX
@@ -51,7 +52,6 @@ class PointsLineShape(startX: Float, startY: Float, currentX: Float, currentY: F
     }
 
     override fun drawSavedShape(canvas: Canvas, paint: Paint) {
-        selectedStroke(paint)
         setPaintStyle(paint)
         drawShape(canvas, paint)
     }

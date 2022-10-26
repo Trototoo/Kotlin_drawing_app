@@ -11,6 +11,7 @@ class PointShape(startX: Float, startY: Float, currentX: Float, currentY: Float)
     override var selected: Boolean = false
 
     override fun drawShape(canvas: Canvas, paint: Paint) {
+        selectedStroke(paint)
         canvas.drawPoint(startX, startY, paint)
     }
 
@@ -25,7 +26,6 @@ class PointShape(startX: Float, startY: Float, currentX: Float, currentY: Float)
     }
 
     override fun drawSavedShape(canvas: Canvas, paint: Paint) {
-        selectedStroke(paint)
         setPaintStyle(paint)
         drawShape(canvas, paint)
     }

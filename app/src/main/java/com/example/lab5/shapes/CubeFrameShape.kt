@@ -12,6 +12,7 @@ class CubeFrameShape(startX: Float, startY: Float, currentX: Float, currentY: Fl
     override var selected: Boolean = false
 
     override fun drawShape(canvas: Canvas, paint: Paint) {
+        selectedStroke(paint)
         val length = if (abs(currentX - startX) < abs(currentY - startY)) abs(currentX -startX) else abs(currentY - startY)
 
         val smallLength = length / 3

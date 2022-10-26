@@ -11,6 +11,7 @@ class RectangleShape(startX: Float, startY: Float, currentX: Float, currentY: Fl
     override var selected: Boolean = false
 
     override fun drawShape(canvas: Canvas, paint: Paint) {
+        selectedStroke(paint)
 
         val left = if (startX > currentX) currentX else startX
         val right = if (startX > currentX) startX else currentX
@@ -33,7 +34,6 @@ class RectangleShape(startX: Float, startY: Float, currentX: Float, currentY: Fl
     }
 
     override fun drawSavedShape(canvas: Canvas, paint: Paint) {
-        selectedStroke(paint)
         setPaintStyle(paint)
         drawShape(canvas, paint)
     }

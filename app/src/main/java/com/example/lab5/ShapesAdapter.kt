@@ -13,8 +13,6 @@ class ShapesAdapter: RecyclerView.Adapter<ShapesAdapter.ShapeHolder>() {
 
     class ShapeHolder(item: View): RecyclerView.ViewHolder(item) {
 
-
-
         val btn = item.findViewById<Button>(R.id.deleteButton)
 
         val binding = ShapeItemBinding.bind(item)
@@ -39,11 +37,11 @@ class ShapesAdapter: RecyclerView.Adapter<ShapesAdapter.ShapeHolder>() {
     }
 
     override fun onBindViewHolder(holder: ShapeHolder, position: Int) {
-        holder.bind(utilities.dynamicArrayOfShape[position])
+        holder.bind(utilities.dynamicArrayOfShape[holder.adapterPosition])
         val checkBox = holder.binding.selectCheckBox
         checkBox.setOnClickListener {
-            utilities.dynamicArrayOfShape[position].selected = !utilities.dynamicArrayOfShape[position].selected
-            checkBox.isChecked = utilities.dynamicArrayOfShape[position].selected
+            utilities.dynamicArrayOfShape[holder.adapterPosition].selected = !utilities.dynamicArrayOfShape[holder.adapterPosition].selected
+            checkBox.isChecked = utilities.dynamicArrayOfShape[holder.adapterPosition].selected
         }
 
         holder.btn.setOnClickListener {

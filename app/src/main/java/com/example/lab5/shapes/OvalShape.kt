@@ -11,6 +11,7 @@ class OvalShape(startX: Float, startY: Float, currentX: Float, currentY: Float) 
     override var selected: Boolean = false
 
     override fun drawShape(canvas: Canvas, paint: Paint) {
+        selectedStroke(paint)
         val otherX = 2 * startX - currentX
         val otherY = 2 * startY - currentY
 
@@ -33,7 +34,6 @@ class OvalShape(startX: Float, startY: Float, currentX: Float, currentY: Float) 
     }
 
     override fun drawSavedShape(canvas: Canvas, paint: Paint) {
-        selectedStroke(paint)
         setFillStyle(paint)
         drawShape(canvas, paint)
         setPaintStyle(paint)

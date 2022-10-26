@@ -11,6 +11,7 @@ class LineShape(startX: Float, startY: Float, currentX: Float, currentY: Float) 
     override var selected: Boolean = false
 
     override fun drawShape(canvas: Canvas, paint: Paint) {
+        selectedStroke(paint)
         canvas.drawLine(startX, startY, currentX, currentY, paint)
     }
 
@@ -25,7 +26,6 @@ class LineShape(startX: Float, startY: Float, currentX: Float, currentY: Float) 
     }
 
     override fun drawSavedShape(canvas: Canvas, paint: Paint) {
-        selectedStroke(paint)
         setPaintStyle(paint)
         drawShape(canvas, paint)
     }
