@@ -6,9 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
-import com.example.lab5.MainActivity.Companion.currentShape
+import com.example.lab5.MainActivity.Companion.utilities
 import com.example.lab5.databinding.ShapeItemBinding
-import com.example.lab5.shapes.PointShape
 import com.example.lab5.shapes.Shape
 
 class ShapesAdapter: RecyclerView.Adapter<ShapesAdapter.ShapeHolder>() {
@@ -41,23 +40,23 @@ class ShapesAdapter: RecyclerView.Adapter<ShapesAdapter.ShapeHolder>() {
     }
 
     override fun onBindViewHolder(holder: ShapeHolder, position: Int) {
-        holder.bind(currentShape.dynamicArrayOfShape[position])
+        holder.bind(utilities.dynamicArrayOfShape[position])
         val checkBox = holder.binding.selectCheckBox
         checkBox.setOnClickListener {
-            currentShape.dynamicArrayOfShape[position].selected = !currentShape.dynamicArrayOfShape[position].selected
-            checkBox.isChecked = currentShape.dynamicArrayOfShape[position].selected
+            utilities.dynamicArrayOfShape[position].selected = !utilities.dynamicArrayOfShape[position].selected
+            checkBox.isChecked = utilities.dynamicArrayOfShape[position].selected
             Log.d("Checked", "Checked")
         }
 
         holder.btn.setOnClickListener {
-            currentShape.dynamicArrayOfShape.removeAt(holder.adapterPosition)
-            currentShape.decrementIndex()
+            utilities.dynamicArrayOfShape.removeAt(holder.adapterPosition)
+            utilities.decrementIndex()
             notifyItemRemoved(holder.adapterPosition)
-            currentShape.resetTableFile()
+            utilities.resetTableFile()
         }
     }
 
     override fun getItemCount(): Int {
-        return currentShape.dynamicArrayOfShape.size
+        return utilities.dynamicArrayOfShape.size
     }
 }

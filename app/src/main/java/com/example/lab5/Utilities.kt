@@ -2,9 +2,8 @@ package com.example.lab5
 
 import com.example.lab5.shapes.*
 import java.io.File
-import java.io.Serializable
 
-class CurrentShape(private var currentShape: ShapeEnum, path: String) {
+class Utilities(private var currentShape: ShapeEnum, path: String) {
 
     private val limit = 118
     val dynamicArrayOfShape = ArrayList<Shape>(limit)
