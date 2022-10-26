@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="@string/point"
+        android:id="@+id/point"
+        android:icon="@drawable/ic_point_on"
+        app:showAsAction="always"
+        />
+    <item
+        android:title="@string/line"
+        android:id="@+id/line"
+        android:icon="@drawable/ic_line_off"
+        app:showAsAction="always"
+        />
+    <item
+        android:title="@string/rectangle"
+        android:id="@+id/rectangle"
+        android:icon="@drawable/ic_rectangle_off"
+        app:showAsAction="always"
+        />
+    <item
+        android:title="@string/oval"
+        android:id="@+id/oval"
+        android:icon="@drawable/ic_oval_off"
+        app:showAsAction="always"
+        />
+    <item android:title="@string/pointsline"
+        android:id="@+id/pointsLine"
+        android:icon="@drawable/ic_points_line_off"
+        app:showAsAction="always"
+        />
+    <item android:title="@string/cubeframe"
+        android:id="@+id/cubeFrame"
+        android:icon="@drawable/ic_cube_frame_off"
+        app:showAsAction="always"
+        />
+    <item
+        android:title="Точка"
+        android:id="@+id/pointMenu"
+        android:checkable="true"
+        android:checked="true"
+        />
+    <item
+        android:title="Лінія"
+        android:id="@+id/lineMenu"
+        android:checkable="true"
+        />
+    <item
+        android:title="Прямокутник"
+        android:id="@+id/rectangleMenu"
+        android:checkable="true"
+        />
+    <item
+        android:title="Еліпс"
+        android:id="@+id/ovalMenu"
+        android:checkable="true"
+        />
+    <item android:title="Точки лінія"
+        android:id="@+id/pointsLineMenu"
+        android:checkable="true"
+        />
+    <item android:title="Каркас куба"
+        android:id="@+id/cubeFrameMenu"
+        android:checkable="true"
+        />
+    <item android:title="@string/reset"
+        android:id="@+id/resetBtn"
+        />
+    <item android:title="Open Table"
+        android:id="@+id/openTableBtn"/>
+</menu>

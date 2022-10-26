@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Lab5</string>
+    <string name="point">Point</string>
+    <string name="line">Line</string>
+    <string name="rectangle">Rectangle</string>
+    <string name="oval">Oval</string>
+    <string name="pointsline">PointsLine</string>
+    <string name="cubeframe">CubeFrame</string>
+    <string name="reset">Reset</string>
+    <string name="col1">ShapeName</string>
+    <string name="col2">StartCord</string>
+    <string name="col3">EndCord</string>
+    <string name="shapeTableCord">(%1$f;%2$f)</string>
+</resources>
