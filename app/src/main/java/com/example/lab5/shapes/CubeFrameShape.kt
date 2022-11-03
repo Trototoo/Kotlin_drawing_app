@@ -63,11 +63,13 @@ class CubeFrameShape(startX: Float, startY: Float, currentX: Float, currentY: Fl
     }
 
     override fun setPaintStyle(paint: Paint) {
+        paint.pathEffect = null
         paint.color = Color.BLACK
         paint.style = Paint.Style.STROKE
     }
 
     override fun setFillStyle(paint: Paint) {
+        paint.pathEffect = null
         paint.color = Color.BLACK
         paint.style = Paint.Style.STROKE
     }

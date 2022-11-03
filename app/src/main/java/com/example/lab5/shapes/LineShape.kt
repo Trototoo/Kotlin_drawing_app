@@ -16,11 +16,13 @@ class LineShape(startX: Float, startY: Float, currentX: Float, currentY: Float) 
     }
 
     override fun setPaintStyle(paint: Paint) {
+        paint.pathEffect = null
         paint.color = Color.BLACK
         paint.style = Paint.Style.STROKE
     }
 
     override fun setFillStyle(paint: Paint) {
+        paint.pathEffect = null
         paint.color = Color.BLACK
         paint.style = Paint.Style.STROKE
     }

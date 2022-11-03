@@ -22,11 +22,13 @@ class RectangleShape(startX: Float, startY: Float, currentX: Float, currentY: Fl
     }
 
     override fun setFillStyle(paint: Paint) {
+        paint.pathEffect = null
         paint.color = Color.BLACK
         paint.style = Paint.Style.STROKE
     }
 
     override fun setPaintStyle(paint: Paint) {
+        paint.pathEffect = null
         paint.apply {
             color = Color.BLACK
             style = Paint.Style.STROKE

@@ -1,6 +1,8 @@
 package com.example.lab5.shapes
 
 import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.DashPathEffect
 import android.graphics.Paint
 import com.example.lab5.ShapeEnum
 
@@ -20,5 +22,10 @@ abstract class Shape (
     }
     abstract fun getName(): String
     abstract fun getType(): ShapeEnum
+
+    fun setTrailStrokeStyle(paint: Paint) {
+        paint.pathEffect = DashPathEffect(floatArrayOf(11f, 40f), 1f)
+        paint.color = Color.BLACK
+    }
 
 }

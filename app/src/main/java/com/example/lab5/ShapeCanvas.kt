@@ -57,7 +57,7 @@ class ShapeCanvas(
             dynamicShapesArray[e].drawSavedShape(canvas!!, paint)
         }
         if (currentActionState == "ACTION_DOWN" || currentActionState == "ACTION_MOVE") {
-            setTrailStrokeColor()
+            dynamicShapesArray[utilities.currentIndex].setTrailStrokeStyle(paint)
             dynamicShapesArray[utilities.currentIndex].drawShape(canvas!!, paint)
         }
     }
