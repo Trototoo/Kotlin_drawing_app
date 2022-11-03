@@ -4,7 +4,6 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.DashPathEffect
 import android.graphics.Paint
-import com.example.lab5.ShapeEnum
 
 abstract class Shape (
     var startX: Float,
@@ -17,11 +16,12 @@ abstract class Shape (
     abstract fun setPaintStyle(paint: Paint)
     abstract fun setFillStyle(paint: Paint)
     abstract fun drawSavedShape(canvas: Canvas, paint: Paint)
+    abstract fun clone() : Shape
+
     fun selectedStroke(paint: Paint) {
         paint.strokeWidth = if(selected) 20f else 10f
     }
     abstract fun getName(): String
-    abstract fun getType(): ShapeEnum
 
     fun setTrailStrokeStyle(paint: Paint) {
         paint.pathEffect = DashPathEffect(floatArrayOf(11f, 40f), 1f)

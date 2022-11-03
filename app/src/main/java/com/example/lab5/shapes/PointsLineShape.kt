@@ -3,7 +3,6 @@ package com.example.lab5.shapes
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
-import com.example.lab5.ShapeEnum
 import kotlin.math.*
 
 class PointsLineShape(startX: Float, startY: Float, currentX: Float, currentY: Float) :
@@ -58,11 +57,11 @@ class PointsLineShape(startX: Float, startY: Float, currentX: Float, currentY: F
         drawShape(canvas, paint)
     }
 
-    override fun getName(): String {
-        return "Гантеля"
+    override fun clone(): Shape {
+        return PointsLineShape(startX, startY, currentX, currentY)
     }
 
-    override fun getType(): ShapeEnum {
-        return ShapeEnum.POINTSLINE
+    override fun getName(): String {
+        return "Гантеля"
     }
 }

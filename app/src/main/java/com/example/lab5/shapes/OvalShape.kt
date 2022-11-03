@@ -3,7 +3,6 @@ package com.example.lab5.shapes
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
-import com.example.lab5.ShapeEnum
 
 class OvalShape(startX: Float, startY: Float, currentX: Float, currentY: Float) :
     Shape(startX, startY, currentX, currentY) {
@@ -42,12 +41,11 @@ class OvalShape(startX: Float, startY: Float, currentX: Float, currentY: Float) 
         drawShape(canvas, paint)
     }
 
+    override fun clone(): Shape {
+        return OvalShape(startX, startY, currentX, currentY)
+    }
+
     override fun getName(): String {
         return "Овал"
     }
-
-    override fun getType(): ShapeEnum {
-        return ShapeEnum.OVAL
-    }
-
 }

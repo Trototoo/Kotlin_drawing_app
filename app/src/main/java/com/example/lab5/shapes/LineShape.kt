@@ -3,7 +3,6 @@ package com.example.lab5.shapes
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
-import com.example.lab5.ShapeEnum
 
 class LineShape(startX: Float, startY: Float, currentX: Float, currentY: Float) :
     Shape(startX, startY, currentX, currentY) {
@@ -32,12 +31,11 @@ class LineShape(startX: Float, startY: Float, currentX: Float, currentY: Float) 
         drawShape(canvas, paint)
     }
 
+    override fun clone(): Shape {
+        return LineShape(startX, startY, currentX, currentY)
+    }
+
     override fun getName(): String {
         return "Лінія"
     }
-
-    override fun getType(): ShapeEnum {
-        return ShapeEnum.LINE
-    }
-
 }

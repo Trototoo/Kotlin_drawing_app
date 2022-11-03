@@ -3,7 +3,6 @@ package com.example.lab5.shapes
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
-import com.example.lab5.ShapeEnum
 
 class RectangleShape(startX: Float, startY: Float, currentX: Float, currentY: Float) :
     Shape(startX, startY, currentX, currentY) {
@@ -40,11 +39,11 @@ class RectangleShape(startX: Float, startY: Float, currentX: Float, currentY: Fl
         drawShape(canvas, paint)
     }
 
-    override fun getName(): String {
-        return "Прямокутник"
+    override fun clone(): Shape {
+        return RectangleShape(startX, startY, currentX, currentY)
     }
 
-    override fun getType(): ShapeEnum {
-        return ShapeEnum.RECTANGLE
+    override fun getName(): String {
+        return "Прямокутник"
     }
 }

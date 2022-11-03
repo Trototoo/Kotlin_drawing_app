@@ -7,7 +7,9 @@ import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lab5.MainActivity.Companion.utilities
 import com.example.lab5.databinding.ShapeItemBinding
+import com.example.lab5.shapes.PointShape
 import com.example.lab5.shapes.Shape
+import kotlin.reflect.typeOf
 
 class ShapesAdapter: RecyclerView.Adapter<ShapesAdapter.ShapeHolder>() {
 
@@ -22,7 +24,7 @@ class ShapesAdapter: RecyclerView.Adapter<ShapesAdapter.ShapeHolder>() {
             val startY = shape.startY.toInt()
             val currentX = shape.currentX.toInt()
             val currentY = shape.currentY.toInt()
-            if (shape.getType() != ShapeEnum.POINT) {
+            if (shape.javaClass.name == PointShape(0f, 0f, 0f, 0f).javaClass.name) {
                 CordText.text = "($startX;$startY) -> ($currentX;$currentY)"
             } else {
                 CordText.text = "($startX;$startY)"

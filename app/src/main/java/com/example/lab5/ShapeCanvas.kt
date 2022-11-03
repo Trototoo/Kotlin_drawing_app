@@ -26,7 +26,12 @@ class ShapeCanvas(
     }
 
     private fun createShape(startX: Float, startY: Float, currentX: Float, currentY: Float): Shape {
-        return utilities.getShape(startX, startY, currentX, currentY)
+        val currentShape = utilities.currentShape.clone()
+        currentShape.startX = startX
+        currentShape.startY = startY
+        currentShape.currentX = currentX
+        currentShape.currentY = currentY
+        return currentShape
     }
 
     private fun setTrailStrokeColor() {
@@ -76,7 +81,7 @@ class ShapeCanvas(
         current.currentX = currentX
         current.currentY = currentY
         invalidate()
-        if (current.getType() != ShapeEnum.POINT) {
+        if (current.javaClass.name != PointShape(0f, 0f, 0f, 0f).javaClass.name) {
             utilities.tableFile.appendText(current.getName() + " (${current.startX.toInt()};${current.startY.toInt()}) -> (${current.currentX.toInt()};${current.currentY.toInt()})\n")
         } else {
             utilities.tableFile.appendText(current.getName() + " (${current.startX.toInt()};${current.startY.toInt()})\n")

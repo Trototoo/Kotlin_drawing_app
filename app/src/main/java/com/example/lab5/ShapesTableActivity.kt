@@ -9,7 +9,7 @@ import com.example.lab5.shapes.Shape
 
 class ShapesTableActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityShapesTableBinding
+    private lateinit var binding: ActivityShapesTableBinding
     lateinit var adapter: ShapesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {

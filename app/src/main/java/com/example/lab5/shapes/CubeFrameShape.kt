@@ -3,7 +3,6 @@ package com.example.lab5.shapes
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
-import com.example.lab5.ShapeEnum
 import kotlin.math.abs
 
 class CubeFrameShape(startX: Float, startY: Float, currentX: Float, currentY: Float) :
@@ -79,11 +78,11 @@ class CubeFrameShape(startX: Float, startY: Float, currentX: Float, currentY: Fl
         drawShape(canvas, paint)
     }
 
-    override fun getName(): String {
-        return "Куб"
+    override fun clone(): Shape {
+        return CubeFrameShape(startX, startY, currentX, currentY)
     }
 
-    override fun getType(): ShapeEnum {
-        return ShapeEnum.CUBEFRAME
+    override fun getName(): String {
+        return "Куб"
     }
 }

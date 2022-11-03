@@ -3,7 +3,6 @@ package com.example.lab5.shapes
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
-import com.example.lab5.ShapeEnum
 
 class PointShape(startX: Float, startY: Float, currentX: Float, currentY: Float) :
     Shape(startX, startY, currentX, currentY) {
@@ -32,11 +31,11 @@ class PointShape(startX: Float, startY: Float, currentX: Float, currentY: Float)
         drawShape(canvas, paint)
     }
 
-    override fun getName(): String {
-        return "Точка"
+    override fun clone(): Shape {
+        return PointShape(startX, startY, currentX, currentY)
     }
 
-    override fun getType(): ShapeEnum {
-        return ShapeEnum.POINT
+    override fun getName(): String {
+        return "Точка"
     }
 }

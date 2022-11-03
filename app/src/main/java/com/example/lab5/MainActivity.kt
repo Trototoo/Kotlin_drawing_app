@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatDelegate
-
+import com.example.lab5.shapes.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
     private var menu: Menu? = null
 
     companion object {
-        val utilities: Utilities = Utilities(ShapeEnum.POINT, "/data/user/0/com.example.lab5/files")
+        val utilities: Utilities = Utilities(PointShape(0f, 0f, 0f, 0f), "/data/user/0/com.example.lab5/files")
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setPointShape() {
-        utilities.setPointShape()
+        utilities.currentShape = PointShape(0f, 0f, 0f, 0f)
         setOffIcons()
         setOffMenu()
         menu?.findItem(R.id.point)?.setIcon(R.drawable.ic_point_on)
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setLineShape() {
-        utilities.setLineShape()
+        utilities.currentShape = LineShape(0f, 0f, 0f, 0f)
         setOffIcons()
         setOffMenu()
         menu?.findItem(R.id.line)?.setIcon(R.drawable.ic_line_on)
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setRectangleShape() {
-        utilities.setRectangleShape()
+        utilities.currentShape = RectangleShape(0f, 0f, 0f, 0f)
         setOffIcons()
         setOffMenu()
         menu?.findItem(R.id.rectangle)?.setIcon(R.drawable.ic_rectangle_on)
@@ -91,7 +91,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setOvalShape() {
-        utilities.setOvalShape()
+        utilities.currentShape = OvalShape(0f, 0f, 0f, 0f)
         setOffIcons()
         setOffMenu()
         menu?.findItem(R.id.oval)?.setIcon(R.drawable.ic_oval_on)
@@ -100,7 +100,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setPointsLineShape() {
-        utilities.setPointsLineShape()
+        utilities.currentShape = PointsLineShape(0f, 0f, 0f, 0f)
         setOffIcons()
         setOffMenu()
         menu?.findItem(R.id.pointsLine)?.setIcon(R.drawable.ic_points_line_on)
@@ -109,7 +109,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setCubeFrameShape() {
-        utilities.setCubeFrameShape()
+        utilities.currentShape = CubeFrameShape(0f, 0f, 0f, 0f)
         setOffIcons()
         setOffMenu()
         menu?.findItem(R.id.cubeFrame)?.setIcon(R.drawable.ic_cube_frame_on)

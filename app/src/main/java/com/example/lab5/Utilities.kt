@@ -3,47 +3,12 @@ package com.example.lab5
 import com.example.lab5.shapes.*
 import java.io.File
 
-class Utilities(private var currentShape: ShapeEnum, path: String) {
+class Utilities(var currentShape: Shape, path: String) {
 
     private val limit = 118
     val dynamicArrayOfShape = ArrayList<Shape>(limit)
     var currentIndex: Int = 0
     val tableFile = File(path, "Shapes Table.txt")
-
-    fun getShape(startX: Float, startY: Float, currentX: Float, currentY: Float) : Shape {
-        return when (currentShape) {
-            ShapeEnum.POINT -> PointShape(startX, startY, currentX, currentY)
-            ShapeEnum.LINE -> LineShape(startX, startY, currentX, currentY)
-            ShapeEnum.RECTANGLE -> RectangleShape(startX, startY, currentX, currentY)
-            ShapeEnum.OVAL -> OvalShape(startX, startY, currentX, currentY)
-            ShapeEnum.POINTSLINE -> PointsLineShape(startX, startY, currentX, currentY)
-            ShapeEnum.CUBEFRAME -> CubeFrameShape(startX, startY, currentX, currentY)
-        }
-    }
-
-    fun setPointShape() {
-        currentShape = ShapeEnum.POINT
-    }
-
-    fun setLineShape() {
-        currentShape = ShapeEnum.LINE
-    }
-
-    fun setRectangleShape() {
-        currentShape = ShapeEnum.RECTANGLE
-    }
-
-    fun setOvalShape() {
-        currentShape = ShapeEnum.OVAL
-    }
-
-    fun setPointsLineShape() {
-        currentShape = ShapeEnum.POINTSLINE
-    }
-
-    fun setCubeFrameShape() {
-        currentShape = ShapeEnum.CUBEFRAME
-    }
 
     fun incrementIndex() {
         currentIndex++
