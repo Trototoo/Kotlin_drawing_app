@@ -39,10 +39,6 @@ class RectangleShape(startX: Float, startY: Float, currentX: Float, currentY: Fl
         drawShape(canvas, paint)
     }
 
-    override fun clone(): Shape {
-        return RectangleShape(startX, startY, currentX, currentY)
-    }
-
     override fun getName(): String {
         return "Прямокутник"
     }

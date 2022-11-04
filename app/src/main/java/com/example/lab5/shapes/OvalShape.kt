@@ -41,10 +41,6 @@ class OvalShape(startX: Float, startY: Float, currentX: Float, currentY: Float) 
         drawShape(canvas, paint)
     }
 
-    override fun clone(): Shape {
-        return OvalShape(startX, startY, currentX, currentY)
-    }
-
     override fun getName(): String {
         return "Овал"
     }

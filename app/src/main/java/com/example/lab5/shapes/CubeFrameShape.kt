@@ -78,10 +78,6 @@ class CubeFrameShape(startX: Float, startY: Float, currentX: Float, currentY: Fl
         drawShape(canvas, paint)
     }
 
-    override fun clone(): Shape {
-        return CubeFrameShape(startX, startY, currentX, currentY)
-    }
-
     override fun getName(): String {
         return "Куб"
     }

@@ -31,10 +31,6 @@ class LineShape(startX: Float, startY: Float, currentX: Float, currentY: Float) 
         drawShape(canvas, paint)
     }
 
-    override fun clone(): Shape {
-        return LineShape(startX, startY, currentX, currentY)
-    }
-
     override fun getName(): String {
         return "Лінія"
     }

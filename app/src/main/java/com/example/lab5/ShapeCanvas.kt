@@ -34,11 +34,6 @@ class ShapeCanvas(
         return currentShape
     }
 
-    private fun setTrailStrokeColor() {
-        this.paint.style = Paint.Style.STROKE
-        this.paint.color = trailColor
-    }
-
     private var currentX = 0f
     private var currentY = 0f
     private var dynamicShapesArray: ArrayList<Shape> = utilities.dynamicArrayOfShape

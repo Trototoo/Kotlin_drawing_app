@@ -57,10 +57,6 @@ class PointsLineShape(startX: Float, startY: Float, currentX: Float, currentY: F
         drawShape(canvas, paint)
     }
 
-    override fun clone(): Shape {
-        return PointsLineShape(startX, startY, currentX, currentY)
-    }
-
     override fun getName(): String {
         return "Гантеля"
     }

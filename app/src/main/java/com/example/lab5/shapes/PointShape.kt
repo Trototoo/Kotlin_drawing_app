@@ -5,7 +5,7 @@ import android.graphics.Color
 import android.graphics.Paint
 
 class PointShape(startX: Float, startY: Float, currentX: Float, currentY: Float) :
-    Shape(startX, startY, currentX, currentY) {
+    Shape(startX, startY, currentX, currentY)  {
 
     override var selected: Boolean = false
 
@@ -29,10 +29,6 @@ class PointShape(startX: Float, startY: Float, currentX: Float, currentY: Float)
     override fun drawSavedShape(canvas: Canvas, paint: Paint) {
         setPaintStyle(paint)
         drawShape(canvas, paint)
-    }
-
-    override fun clone(): Shape {
-        return PointShape(startX, startY, currentX, currentY)
     }
 
     override fun getName(): String {
