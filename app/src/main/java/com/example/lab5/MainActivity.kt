@@ -7,6 +7,9 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.lab5.shapes.*
+import java.io.File
+import java.nio.file.Files
+import java.nio.file.Paths
 
 
 class MainActivity : AppCompatActivity() {
@@ -23,6 +26,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         setContentView(R.layout.activity_main)
+        if (!File("/data/user/0/com.example.lab5/files").isDirectory) {
+            Files.createDirectory(Paths.get("/data/user/0/com.example.lab5/files"))
+        }
         utilities.tableFile.writeText("")
 
         shapeCanvas = ShapeCanvas(this, utilities)
