@@ -22,7 +22,11 @@ class Utilities(var currentShape: Shape, path: String) {
         tableFile.writeText("")
         for (e in 0 until currentIndex) {
             val current = dynamicArrayOfShape[e]
-            tableFile.appendText(current.getName() + " (${current.startX.toInt()};${current.startY.toInt()}) -> (${current.currentX.toInt()};${current.currentY.toInt()})\n")
+            if (currentShape::class == PointShape(0f, 0f, 0f, 0f)::class) {
+                tableFile.appendText(current.getName() + " (${current.startX.toInt()};${current.startY.toInt()})\n")
+            } else {
+                tableFile.appendText(current.getName() + " (${current.startX.toInt()};${current.startY.toInt()}) -> (${current.currentX.toInt()};${current.currentY.toInt()})\n")
+            }
         }
     }
 
