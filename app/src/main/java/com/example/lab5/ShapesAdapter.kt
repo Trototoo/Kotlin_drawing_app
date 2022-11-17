@@ -25,9 +25,9 @@ class ShapesAdapter: RecyclerView.Adapter<ShapesAdapter.ShapeHolder>() {
             val currentX = shape.currentX.toInt()
             val currentY = shape.currentY.toInt()
             if (shape.javaClass.name == PointShape(0f, 0f, 0f, 0f).javaClass.name) {
-                CordText.text = "($startX;$startY) -> ($currentX;$currentY)"
-            } else {
                 CordText.text = "($startX;$startY)"
+            } else {
+                CordText.text = "($startX;$startY) -> ($currentX;$currentY)"
             }
             selectCheckBox.isChecked = shape.selected
         }
