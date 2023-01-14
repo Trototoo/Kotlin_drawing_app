@@ -5,12 +5,12 @@ import android.graphics.Color
 import android.graphics.DashPathEffect
 import android.graphics.Paint
 
-abstract class Shape (
+abstract class Shape(
     var startX: Float,
     var startY: Float,
     var currentX: Float,
-    var currentY: Float,
-): Cloneable {
+    var currentY: Float
+) : Cloneable {
     abstract var selected: Boolean
     abstract fun drawShape(canvas: Canvas, paint: Paint)
     abstract fun setPaintStyle(paint: Paint)
@@ -21,7 +21,7 @@ abstract class Shape (
     }
 
     fun selectedStroke(paint: Paint) {
-        paint.strokeWidth = if(selected) 20f else 10f
+        paint.strokeWidth = if (selected) 20f else 10f
     }
     abstract fun getName(): String
 
@@ -29,5 +29,4 @@ abstract class Shape (
         paint.pathEffect = DashPathEffect(floatArrayOf(11f, 40f), 1f)
         paint.color = Color.BLACK
     }
-
 }

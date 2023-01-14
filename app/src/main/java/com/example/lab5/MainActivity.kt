@@ -1,16 +1,15 @@
 package com.example.lab5
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.lab5.shapes.*
 import java.io.File
 import java.nio.file.Files
 import java.nio.file.Paths
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,7 +32,6 @@ class MainActivity : AppCompatActivity() {
 
         shapeCanvas = ShapeCanvas(this, utilities)
         setContentView(shapeCanvas)
-
 
         setPointShape()
     }
@@ -140,5 +138,4 @@ class MainActivity : AppCompatActivity() {
         menu?.findItem(R.id.pointsLineMenu)?.isChecked = false
         menu?.findItem(R.id.cubeFrameMenu)?.isChecked = false
     }
-
 }

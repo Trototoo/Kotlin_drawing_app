@@ -29,5 +29,4 @@ class Utilities(var currentShape: Shape, path: String) {
             }
         }
     }
-
 }

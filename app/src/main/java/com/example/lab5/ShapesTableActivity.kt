@@ -1,11 +1,10 @@
 package com.example.lab5
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lab5.databinding.ActivityShapesTableBinding
-import com.example.lab5.shapes.Shape
 
 class ShapesTableActivity : AppCompatActivity() {
 
@@ -34,8 +33,7 @@ class ShapesTableActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) super.onBackPressed();
+        if (item.itemId == android.R.id.home) super.onBackPressed()
         return true
     }
-
 }

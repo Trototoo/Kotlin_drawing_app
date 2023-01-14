@@ -12,7 +12,6 @@ class ShapeCanvas(
     context: Context,
     private var utilities: Utilities
 ) : View(context) {
-    private val trailColor = Color.BLUE
 
     private val paint = Paint().apply {
         isAntiAlias

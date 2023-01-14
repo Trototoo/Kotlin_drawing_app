@@ -9,16 +9,15 @@ import com.example.lab5.MainActivity.Companion.utilities
 import com.example.lab5.databinding.ShapeItemBinding
 import com.example.lab5.shapes.PointShape
 import com.example.lab5.shapes.Shape
-import kotlin.reflect.typeOf
 
-class ShapesAdapter: RecyclerView.Adapter<ShapesAdapter.ShapeHolder>() {
+class ShapesAdapter : RecyclerView.Adapter<ShapesAdapter.ShapeHolder>() {
 
-    class ShapeHolder(item: View): RecyclerView.ViewHolder(item) {
+    class ShapeHolder(item: View) : RecyclerView.ViewHolder(item) {
 
         val btn = item.findViewById<Button>(R.id.deleteButton)
 
         val binding = ShapeItemBinding.bind(item)
-        fun bind(shape: Shape) = with (binding){
+        fun bind(shape: Shape) = with(binding) {
             ShapeNameText.text = shape.getName()
             val startX = shape.startX.toInt()
             val startY = shape.startY.toInt()

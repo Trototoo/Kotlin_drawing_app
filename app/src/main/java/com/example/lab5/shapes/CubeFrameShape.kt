@@ -12,7 +12,7 @@ class CubeFrameShape(startX: Float, startY: Float, currentX: Float, currentY: Fl
 
     override fun drawShape(canvas: Canvas, paint: Paint) {
         selectedStroke(paint)
-        val length = if (abs(currentX - startX) < abs(currentY - startY)) abs(currentX -startX) else abs(currentY - startY)
+        val length = if (abs(currentX - startX) < abs(currentY - startY)) abs(currentX - startX) else abs(currentY - startY)
 
         val smallLength = length / 3
         val bigLength = smallLength * 2
@@ -26,7 +26,6 @@ class CubeFrameShape(startX: Float, startY: Float, currentX: Float, currentY: Fl
         val secondRectRight: Float
         val secondRectTop: Float
         val secondRectBottom: Float
-
 
         if (startX < currentX) {
             left = startX
@@ -58,7 +57,6 @@ class CubeFrameShape(startX: Float, startY: Float, currentX: Float, currentY: Fl
         canvas.drawLine(left, top, secondRectLeft, secondRectTop, paint)
         canvas.drawLine(right, bottom, secondRectRight, secondRectBottom, paint)
         canvas.drawLine(right, top, secondRectRight, secondRectTop, paint)
-
     }
 
     override fun setPaintStyle(paint: Paint) {
