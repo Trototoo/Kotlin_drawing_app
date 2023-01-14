@@ -10,7 +10,7 @@ private const val STROKE_WIDTH = 10f
 
 class ShapeCanvas(
     context: Context,
-    private var utilities: Utilities,
+    private var utilities: Utilities
 ) : View(context) {
     private val trailColor = Color.BLUE
 
@@ -38,7 +38,7 @@ class ShapeCanvas(
     private var currentY = 0f
     private var dynamicShapesArray: ArrayList<Shape> = utilities.dynamicArrayOfShape
 
-    private var currentActionState = "Nothing"
+    private var currentActionState = CurrentTouchState.UP
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         currentX = event!!.x
@@ -56,7 +56,7 @@ class ShapeCanvas(
         for (e in 0 until utilities.currentIndex) {
             dynamicShapesArray[e].drawSavedShape(canvas!!, paint)
         }
-        if (currentActionState == "ACTION_DOWN" || currentActionState == "ACTION_MOVE") {
+        if (currentActionState == CurrentTouchState.DOWN || currentActionState == CurrentTouchState.MOVE) {
             dynamicShapesArray[utilities.currentIndex].setTrailStrokeStyle(paint)
             dynamicShapesArray[utilities.currentIndex].drawShape(canvas!!, paint)
         }
@@ -71,7 +71,7 @@ class ShapeCanvas(
     }
 
     private fun touchUp() {
-        currentActionState = "ACTION_UP"
+        currentActionState = CurrentTouchState.UP
         val current = dynamicShapesArray[utilities.currentIndex]
         current.currentX = currentX
         current.currentY = currentY
@@ -86,7 +86,7 @@ class ShapeCanvas(
     }
 
     private fun touchMove() {
-        currentActionState = "ACTION_MOVE"
+        currentActionState = CurrentTouchState.MOVE
         val current = dynamicShapesArray[utilities.currentIndex]
         current.currentX = currentX
         current.currentY = currentY
@@ -94,7 +94,7 @@ class ShapeCanvas(
     }
 
     private fun touchStart() {
-        currentActionState = "ACTION_DOWN"
+        currentActionState = CurrentTouchState.DOWN
         dynamicShapesArray.add(utilities.currentIndex, createShape(currentX, currentY, currentX, currentY))
     }
     fun resetCanvas() {
@@ -102,5 +102,9 @@ class ShapeCanvas(
         dynamicShapesArray.clear()
         utilities.resetTableFile()
         invalidate()
+    }
+
+    enum class CurrentTouchState {
+        UP, DOWN, MOVE
     }
 }
