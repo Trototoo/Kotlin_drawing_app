@@ -9,11 +9,28 @@ class PointsLineShape(startX: Float, startY: Float, currentX: Float, currentY: F
     Shape(startX, startY, currentX, currentY) {
 
     override var selected: Boolean = false
+    private val radius = 70f
 
     override fun drawShape(canvas: Canvas, paint: Paint) {
         selectedStroke(paint)
-        val radius = 70f
 
+        val distance = sqrt((currentX - startX).pow(2) + (currentY - startY).pow(2))
+
+        val lineCords = getLineCords()
+
+        val firstX = lineCords["firstX"]
+        val firstY = lineCords["firstY"]
+        val secondX = lineCords["secondX"]
+        val secondY = lineCords["secondY"]
+
+        if (distance > radius * 2) {
+            canvas.drawLine(firstX!!, firstY!!, secondX!!, secondY!!, paint)
+        }
+        canvas.drawCircle(startX, startY, radius, paint)
+        canvas.drawCircle(currentX, currentY, radius, paint)
+    }
+
+    private fun getLineCords(): Map<String, Float> {
         val left = if (startX > currentX) currentX else startX
         val right = if (startX > currentX) startX else currentX
         val top = if (startY > currentY) startY else currentY
@@ -31,13 +48,7 @@ class PointsLineShape(startX: Float, startY: Float, currentX: Float, currentY: F
         val secondX = if (currentX == left) (currentX + shiftX) else (currentX - shiftX)
         val secondY = if (currentY == bottom) (currentY + shiftY) else (currentY - shiftY)
 
-        val distance = sqrt((currentX - startX).pow(2) + (currentY - startY).pow(2))
-
-        if (distance > radius * 2) {
-            canvas.drawLine(firstX, firstY, secondX, secondY, paint)
-        }
-        canvas.drawCircle(startX, startY, radius, paint)
-        canvas.drawCircle(currentX, currentY, radius, paint)
+        return mapOf("firstX" to firstX, "firstY" to firstY, "secondX" to secondX, "secondY" to secondY)
     }
 
     override fun setPaintStyle(paint: Paint) {
