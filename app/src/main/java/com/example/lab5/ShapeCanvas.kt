@@ -75,11 +75,13 @@ class ShapeCanvas(
         current.currentX = currentX
         current.currentY = currentY
         invalidate()
-        if (current.javaClass.name != PointShape(0f, 0f, 0f, 0f).javaClass.name) {
-            utilities.tableFile.appendText(current.getName() + " (${current.startX.toInt()};${current.startY.toInt()}) -> (${current.currentX.toInt()};${current.currentY.toInt()})\n")
-        } else {
-            utilities.tableFile.appendText(current.getName() + " (${current.startX.toInt()};${current.startY.toInt()})\n")
-        }
+        val pointShapeClassName = PointShape(0f, 0f, 0f, 0f).javaClass.name
+        val className = current.javaClass.name
+        val name = current.getName()
+        val start = "(${current.startX.toInt()};${current.startY.toInt()})"
+        val end = if (className != pointShapeClassName) " -> (${current.currentX.toInt()};${current.currentY.toInt()})\n" else "\n"
+        val appendString = "$name $start$end"
+        utilities.tableFile.appendText(appendString)
 
         utilities.incrementIndex()
     }
