@@ -16,6 +16,9 @@ abstract class Shape(
     abstract fun setPaintStyle(paint: Paint)
     abstract fun setFillStyle(paint: Paint)
     abstract fun drawSavedShape(canvas: Canvas, paint: Paint)
+    val dashLength = 11f
+    val gapLength = 40f
+    val dashOffset = 1f
     public override fun clone(): Shape {
         return super.clone() as Shape
     }
@@ -26,7 +29,7 @@ abstract class Shape(
     abstract fun getName(): String
 
     fun setTrailStrokeStyle(paint: Paint) {
-        paint.pathEffect = DashPathEffect(floatArrayOf(11f, 40f), 1f)
+        paint.pathEffect = DashPathEffect(floatArrayOf(dashLength, gapLength), dashOffset)
         paint.color = Color.BLACK
     }
 }
