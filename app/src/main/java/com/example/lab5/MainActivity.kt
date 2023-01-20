@@ -42,23 +42,25 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    private val buttonsAction = mapOf(
+        R.id.point to ::setPointShape,
+        R.id.line to ::setLineShape,
+        R.id.rectangle to ::setRectangleShape,
+        R.id.oval to ::setOvalShape,
+        R.id.pointsLine to ::setPointsLineShape,
+        R.id.cubeFrame to ::setCubeFrameShape,
+        R.id.pointMenu to ::setPointShape,
+        R.id.lineMenu to ::setLineShape,
+        R.id.rectangleMenu to ::setRectangleShape,
+        R.id.ovalMenu to ::setOvalShape,
+        R.id.pointsLineMenu to ::setPointsLineShape,
+        R.id.cubeFrameMenu to ::setCubeFrameShape,
+        R.id.resetBtn to { shapeCanvas.resetCanvas() },
+        R.id.openTableBtn to ::openTableActivity
+    )
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.point -> setPointShape()
-            R.id.line -> setLineShape()
-            R.id.rectangle -> setRectangleShape()
-            R.id.oval -> setOvalShape()
-            R.id.pointsLine -> setPointsLineShape()
-            R.id.cubeFrame -> setCubeFrameShape()
-            R.id.pointMenu -> setPointShape()
-            R.id.lineMenu -> setLineShape()
-            R.id.rectangleMenu -> setRectangleShape()
-            R.id.ovalMenu -> setOvalShape()
-            R.id.pointsLineMenu -> setPointsLineShape()
-            R.id.cubeFrameMenu -> setCubeFrameShape()
-            R.id.resetBtn -> shapeCanvas.resetCanvas()
-            R.id.openTableBtn -> openTableActivity()
-        }
+        buttonsAction[item.itemId]?.invoke()
         return true
     }
 
