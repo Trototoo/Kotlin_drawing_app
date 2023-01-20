@@ -11,13 +11,14 @@ class OvalShape(startX: Float, startY: Float, currentX: Float, currentY: Float) 
 
     override fun drawShape(canvas: Canvas, paint: Paint) {
         selectedStroke(paint)
-        val otherX = 2 * startX - currentX
-        val otherY = 2 * startY - currentY
+        // We get cords of central dot and one of corners and calculate other corner cords with easy mathematical formula
+        val otherCornerX = 2 * startX - currentX
+        val otherCornerY = 2 * startY - currentY
 
-        val left = if (otherX > currentX) currentX else otherX
-        val right = if (otherX > currentX) otherX else currentX
-        val top = if (otherY > currentY) otherY else currentY
-        val bottom = if (otherY > currentY) currentY else otherY
+        val left = if (otherCornerX > currentX) currentX else otherCornerX
+        val right = if (otherCornerX > currentX) otherCornerX else currentX
+        val top = if (otherCornerY > currentY) otherCornerY else currentY
+        val bottom = if (otherCornerY > currentY) currentY else otherCornerY
 
         canvas.drawOval(left, top, right, bottom, paint)
     }
