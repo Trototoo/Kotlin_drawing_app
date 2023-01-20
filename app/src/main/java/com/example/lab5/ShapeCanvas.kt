@@ -4,13 +4,17 @@ import android.content.Context
 import android.graphics.*
 import android.view.MotionEvent
 import android.view.View
+import com.example.lab5.MainActivity.Companion.currentIndex
+import com.example.lab5.MainActivity.Companion.currentShape
+import com.example.lab5.MainActivity.Companion.dynamicArrayOfShape
+import com.example.lab5.MainActivity.Companion.resetTableFile
+import com.example.lab5.MainActivity.Companion.tableFile
 import com.example.lab5.shapes.*
 
 private const val STROKE_WIDTH = 10f
 
 class ShapeCanvas(
-    context: Context,
-    private var utilities: Utilities
+    context: Context
 ) : View(context) {
 
     private val paint = Paint().apply {
@@ -25,7 +29,7 @@ class ShapeCanvas(
     }
 
     private fun createShape(startX: Float, startY: Float, currentX: Float, currentY: Float): Shape {
-        val currentShape = utilities.currentShape.clone()
+        val currentShape = currentShape.clone()
         currentShape.startX = startX
         currentShape.startY = startY
         currentShape.currentX = currentX
@@ -35,7 +39,7 @@ class ShapeCanvas(
 
     private var currentX = 0f
     private var currentY = 0f
-    private var dynamicShapesArray: ArrayList<Shape> = utilities.dynamicArrayOfShape
+    private var dynamicShapesArray: ArrayList<Shape> = dynamicArrayOfShape
 
     private var currentActionState = CurrentTouchState.UP
 
@@ -52,12 +56,12 @@ class ShapeCanvas(
     }
 
     private fun drawShapes(canvas: Canvas?) {
-        for (e in 0 until utilities.currentIndex) {
+        for (e in 0 until currentIndex) {
             dynamicShapesArray[e].drawSavedShape(canvas!!, paint)
         }
         if (currentActionState == CurrentTouchState.DOWN || currentActionState == CurrentTouchState.MOVE) {
-            dynamicShapesArray[utilities.currentIndex].setTrailStrokeStyle(paint)
-            dynamicShapesArray[utilities.currentIndex].drawShape(canvas!!, paint)
+            dynamicShapesArray[currentIndex].setTrailStrokeStyle(paint)
+            dynamicShapesArray[currentIndex].drawShape(canvas!!, paint)
         }
     }
 
@@ -71,7 +75,7 @@ class ShapeCanvas(
 
     private fun touchUp() {
         currentActionState = CurrentTouchState.UP
-        val current = dynamicShapesArray[utilities.currentIndex]
+        val current = dynamicShapesArray[currentIndex]
         current.currentX = currentX
         current.currentY = currentY
         invalidate()
@@ -81,14 +85,14 @@ class ShapeCanvas(
         val start = "(${current.startX.toInt()};${current.startY.toInt()})"
         val end = if (className != pointShapeClassName) " -> (${current.currentX.toInt()};${current.currentY.toInt()})\n" else "\n"
         val appendString = "$name $start$end"
-        utilities.tableFile.appendText(appendString)
+        tableFile.appendText(appendString)
 
-        utilities.incrementIndex()
+        currentIndex++
     }
 
     private fun touchMove() {
         currentActionState = CurrentTouchState.MOVE
-        val current = dynamicShapesArray[utilities.currentIndex]
+        val current = dynamicShapesArray[currentIndex]
         current.currentX = currentX
         current.currentY = currentY
         invalidate()
@@ -96,12 +100,12 @@ class ShapeCanvas(
 
     private fun touchStart() {
         currentActionState = CurrentTouchState.DOWN
-        dynamicShapesArray.add(utilities.currentIndex, createShape(currentX, currentY, currentX, currentY))
+        dynamicShapesArray.add(currentIndex, createShape(currentX, currentY, currentX, currentY))
     }
     fun resetCanvas() {
-        utilities.currentIndex = 0
+        currentIndex = 0
         dynamicShapesArray.clear()
-        utilities.resetTableFile()
+        resetTableFile()
         invalidate()
     }
 

@@ -18,7 +18,21 @@ class MainActivity : AppCompatActivity() {
     private var menu: Menu? = null
 
     companion object {
-        val utilities: Utilities = Utilities(PointShape(0f, 0f, 0f, 0f), "/data/user/0/com.example.lab5/files")
+        val dynamicArrayOfShape = ArrayList<Shape>(118)
+        var currentIndex: Int = 0
+        val tableFile = File("/data/user/0/com.example.lab5/files", "Shapes Table.txt")
+        var currentShape: Shape = PointShape(0f, 0f, 0f, 0f)
+        fun resetTableFile() {
+            tableFile.writeText("")
+            for (e in 0 until currentIndex) {
+                val current = dynamicArrayOfShape[e]
+                if (currentShape::class == PointShape(0f, 0f, 0f, 0f)::class) {
+                    tableFile.appendText(current.getName() + " (${current.startX.toInt()};${current.startY.toInt()})\n")
+                } else {
+                    tableFile.appendText(current.getName() + " (${current.startX.toInt()};${current.startY.toInt()}) -> (${current.currentX.toInt()};${current.currentY.toInt()})\n")
+                }
+            }
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,9 +42,9 @@ class MainActivity : AppCompatActivity() {
         if (!File("/data/user/0/com.example.lab5/files").isDirectory) {
             Files.createDirectory(Paths.get("/data/user/0/com.example.lab5/files"))
         }
-        utilities.tableFile.writeText("")
+        tableFile.writeText("")
 
-        shapeCanvas = ShapeCanvas(this, utilities)
+        shapeCanvas = ShapeCanvas(this)
         setContentView(shapeCanvas)
 
         setPointShape()
@@ -70,7 +84,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setPointShape() {
-        utilities.currentShape = PointShape(0f, 0f, 0f, 0f)
+        currentShape = PointShape(0f, 0f, 0f, 0f)
         setOffIcons()
         setOffMenu()
         menu?.findItem(R.id.point)?.setIcon(R.drawable.ic_point_on)
@@ -79,7 +93,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setLineShape() {
-        utilities.currentShape = LineShape(0f, 0f, 0f, 0f)
+        currentShape = LineShape(0f, 0f, 0f, 0f)
         setOffIcons()
         setOffMenu()
         menu?.findItem(R.id.line)?.setIcon(R.drawable.ic_line_on)
@@ -88,7 +102,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setRectangleShape() {
-        utilities.currentShape = RectangleShape(0f, 0f, 0f, 0f)
+        currentShape = RectangleShape(0f, 0f, 0f, 0f)
         setOffIcons()
         setOffMenu()
         menu?.findItem(R.id.rectangle)?.setIcon(R.drawable.ic_rectangle_on)
@@ -97,7 +111,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setOvalShape() {
-        utilities.currentShape = OvalShape(0f, 0f, 0f, 0f)
+        currentShape = OvalShape(0f, 0f, 0f, 0f)
         setOffIcons()
         setOffMenu()
         menu?.findItem(R.id.oval)?.setIcon(R.drawable.ic_oval_on)
@@ -106,7 +120,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setPointsLineShape() {
-        utilities.currentShape = PointsLineShape(0f, 0f, 0f, 0f)
+        currentShape = PointsLineShape(0f, 0f, 0f, 0f)
         setOffIcons()
         setOffMenu()
         menu?.findItem(R.id.pointsLine)?.setIcon(R.drawable.ic_points_line_on)
@@ -115,7 +129,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setCubeFrameShape() {
-        utilities.currentShape = CubeFrameShape(0f, 0f, 0f, 0f)
+        currentShape = CubeFrameShape(0f, 0f, 0f, 0f)
         setOffIcons()
         setOffMenu()
         menu?.findItem(R.id.cubeFrame)?.setIcon(R.drawable.ic_cube_frame_on)
